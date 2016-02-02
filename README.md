@@ -16,7 +16,7 @@ simple_log can be used withoud creating a logger object.
 
 By default it's configured in a 'DEBUG' level and no logger name is printed.
 
-In this case it alligns the level names
+In this case it aligns the level names
 
 ```python
 import simple_log as slog
@@ -45,7 +45,7 @@ slog.info(Bar(), 'on route', 22)
 -----------------------
 You can use custom logger names or classes instead of names.
 
-You can also use levels as strings.
+You can also pass levels as strings.
 
 ```python
 class Foo(object):
@@ -63,13 +63,13 @@ log3.info('Indentation is messed up by big names)
 >[    INFO]an unreasonably big name: This will mess indentation up
 ```
 
-#File Logging (experimental)
+##File Logging (experimental)
 -------------------
 By defining a filename, the the logger will also print to a file.
 
-The loggin level of file output is fixed to 'DEBUG' (for now).
+The loggin level of the file output is fixed to 'DEBUG' (for now).
 
-The output format is also fixed
+The output format is also fixed (for now).
 
 ```python
 afile = "my_file.log"
@@ -88,11 +88,11 @@ Jan22 17:56:05 [ INFO]        also-in-file1: This will be printed in a file
 Jan22 17:56:05 [ INFO]        also-in-file2: This will also be printed in a file
 ```
 
-#Misc
+##Misc
 -----
-##No Levels
+###No Levels
 -----------
-You can also avoid printing levels in output
+You can also avoid printing levels in the output messages.
 
 ```python
 log4 = slog.get_simple_logger("No-level-logger", show_level=False)
