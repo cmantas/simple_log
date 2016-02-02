@@ -14,7 +14,7 @@ from logging import *
 from inspect import isclass
 import sys
 
-__all__ = ['SimpleManager', 'SimpleLogger', 'get_simple_logger', 'name_size']
+__all__ = ['SimpleManager', 'SimpleLogger', 'get_simple_logger', 'name_size', 'output_stream']
 
 
 class SimpleManager(logging.Manager):
@@ -97,6 +97,7 @@ Logger.manager = SimpleManager(logging.root)
 # ===================> misc static params <======================== #
 name_size=15 # max name size allowed
 _configured_loggers = set()
+output_stream = sys.stderr
 
 
 def get_simple_logger(name, level=INFO, show_level=True,logfile=None):
@@ -109,7 +110,7 @@ def get_simple_logger(name, level=INFO, show_level=True,logfile=None):
     :return: SimpleLogger instance
     """
 
-# get or create the logger
+    # get or create the logger
     new_logger = getLogger(name)
 
     # skip configuration if logger already configured
@@ -129,7 +130,7 @@ def get_simple_logger(name, level=INFO, show_level=True,logfile=None):
     formatter = Formatter(console_format, "%b%d %H:%M:%S")
 
     # create a console handler
-    console_handler = StreamHandler(sys.stderr)
+    console_handler = StreamHandler(output_stream)
     console_handler.setFormatter(formatter)
     console_handler.setLevel(level)
 
