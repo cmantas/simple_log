@@ -1,4 +1,5 @@
 #Simple Log for Python
+----------------------
 
 simple_log provides is a simplistic wrapper for python logging module.
 It is supposed to be used as a drop in replacement for "print" for people who cannot 
@@ -9,7 +10,7 @@ Its functions are NOT interchangable with those in the logging module but follow
 
 
 ##Basic
-
+--------
 simple_log can be used withoud creating a logger object.
 
 By default it's configured in a 'DEBUG' level and no logger name is printed.
@@ -26,7 +27,7 @@ slog.warning("Something might be wrong")
 > WARNING: Something might be wrong
 ```
 
-Any Arguments
+##Any Arguments
 --------------
 Any number of arguments is converted to a joined string message.
 ```python
@@ -39,7 +40,7 @@ slog.info(Bar(), 'on route', 22)
 >    INFO: a Bar on route 22
 ```
 
-Custom Names or Classes
+##Custom Names or Classes
 -----------------------
 You can use custom logger names or classes instead of names.
 
@@ -61,7 +62,7 @@ log3.info('Indentation is messed up by big names)
 >[    INFO]an unreasonably big name: This will mess indentation up
 ```
 
-File Logging (experimental)
+#File Logging (experimental)
 -------------------
 By defining a filename, the the logger will also print to a file.
 
