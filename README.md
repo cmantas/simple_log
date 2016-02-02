@@ -37,16 +37,14 @@ class Bar(object):
 
 slog.info(Bar(), 'on route', 22)
 
-> INFO:a Bar on route 22
+>    INFO:a Bar on route 22
 ```
 
 Custom Names or Classes
 -----------------------
-You can use custom logger names or classes.
+You can use custom logger names or classes instead of names.
 
-One can also use levels as strings.
-
-
+You can also use levels as strings.
 
 ```python
 class Foo(object):
@@ -59,5 +57,9 @@ log1.info("The earth has", 1, 'moon(s)')
 log2.critical('Everything blew up!')
 log3.info('Indentation is messed up by big names)
 
-```
-
+>[    INFO]  Some Big Name: The earth has 1 moon(s)
+>[CRITICAL]            Foo: Everything blew up!
+>[    INFO]an unreasonably big name: This will mess indentation up
+>[    INFO]  also-in-file1: This will be printed in a file
+>[    INFO]  also-in-file2: This will also be printed in a file```
+>
