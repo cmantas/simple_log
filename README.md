@@ -13,7 +13,7 @@ Basic
 ------
 simple_log can be used withoud creating a logger object.
 
-By default it's configured in a 'DEBUG' level.
+By default it's configured in a 'DEBUG' level and no logger name is printed.
 
 In this case it alligns the level names
 
@@ -23,13 +23,13 @@ import simple_log as slog
 slog.debug("This is a debug message")
 slog.warning("Something might be wrong")
 
->   DEBUG:This is a debug message
-> WARNING:Something might be wrong
+>   DEBUG: This is a debug message
+> WARNING: Something might be wrong
 ```
 
 Any Arguments
 --------------
-Any number of arguments is converted to a joined into a string message.
+Any number of arguments is converted to a joined string message.
 ```python
 class Bar(object):
     def __str__(self):
@@ -37,7 +37,7 @@ class Bar(object):
 
 slog.info(Bar(), 'on route', 22)
 
->    INFO:a Bar on route 22
+>    INFO: a Bar on route 22
 ```
 
 Custom Names or Classes
@@ -72,10 +72,11 @@ The output format is also fixed
 
 ```python
 afile = "my_file.log"
-log6 = slog.get_simple_logger("also-in-file1", logfile=afile)
-log7 = slog.get_simple_logger("also-in-file2", logfile=afile)
+log6  = slog.get_simple_logger("also-in-file1", logfile=afile)
+log7  = slog.get_simple_logger("also-in-file2", logfile=afile)
 log6.info("This will be printed in a file")
 log7.info("This will also be printed in a file")
+
 >[    INFO]  also-in-file1: This will be printed in a file
 >[    INFO]  also-in-file2: This will also be printed in a file
 
@@ -88,7 +89,9 @@ Jan22 17:56:05 [ INFO]        also-in-file2: This will also be printed in a file
 
 Misc
 -----
-You can also avoid using levels in output
+No Levels
+*********
+You can also avoid printing levels in output
 
 ```python
 log4 = slog.get_simple_logger("No-level-logger", show_level=False)
