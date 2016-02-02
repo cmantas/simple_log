@@ -105,8 +105,8 @@ log5.info("indentation still OK")
 >         Foobar: indentation still OK
 ```
 ###Setup (not recomended)
-as root, or with sudo:
 -------------------------
+as root, or with sudo:
 ```bash
 $python setup.py install
 ```
