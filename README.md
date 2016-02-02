@@ -104,3 +104,9 @@ log5.info("indentation still OK")
 >No-level-logger: <- no level there
 >         Foobar: indentation still OK
 ```
+###Setup (not recomended)
+as root, or with sudo:
+-------------------------
+```bash
+$python setup.py install
+```
