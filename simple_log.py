@@ -1,8 +1,5 @@
-#from logging import *
-#from logging import Manager
-
-import logging_copy as logging
-from logging_copy import *
+import logging
+from logging import *
 from inspect import isclass
 
 import sys

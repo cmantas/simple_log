@@ -60,6 +60,43 @@ log3.info('Indentation is messed up by big names)
 >[    INFO]  Some Big Name: The earth has 1 moon(s)
 >[CRITICAL]            Foo: Everything blew up!
 >[    INFO]an unreasonably big name: This will mess indentation up
+```
+
+File Logging (experimental)
+-------------------
+By defining a filename, the the logger will also print to a file.
+
+The loggin level of file output is fixed to 'DEBUG' (for now).
+
+The output format is also fixed
+
+```python
+afile = "my_file.log"
+log6 = slog.get_simple_logger("also-in-file1", logfile=afile)
+log7 = slog.get_simple_logger("also-in-file2", logfile=afile)
+log6.info("This will be printed in a file")
+log7.info("This will also be printed in a file")
 >[    INFO]  also-in-file1: This will be printed in a file
->[    INFO]  also-in-file2: This will also be printed in a file```
->
+>[    INFO]  also-in-file2: This will also be printed in a file
+
+```
+in file 'my_file.log':
+```
+Jan22 17:56:05 [ INFO]        also-in-file1: This will be printed in a file
+Jan22 17:56:05 [ INFO]        also-in-file2: This will also be printed in a file
+```
+
+Misc
+-----
+You can also avoid using levels in output
+
+```python
+log4 = slog.get_simple_logger("No-level-logger", show_level=False)
+log5 = slog.get_simple_logger("No-level-logger", show_level=False)
+log4.info("<- no level there")
+log5 = slog.get_simple_logger("Foobar", show_level=False)
+log5.info("indentation still OK")
+
+>No-level-logger: <- no level there
+>         Foobar: indentation still OK
+```
