@@ -76,7 +76,7 @@ def _get_level_from_name(lname_or_val):
 
 # ==========------> OVERWRITE logging DEFAULTS <-------=============== #
 # overwrite root logger, logger class and manager, basic format
-logging.BASIC_FORMAT='%(levelname)8s: %(message)s'
+logging.BASIC_FORMAT='%(levelname)8s:%(message)s'
 logging.root = SimpleLogger('root', level=DEBUG)
 setLoggerClass(SimpleLogger)
 Logger.manager = SimpleManager(logging.root)
@@ -96,7 +96,7 @@ def get_simple_logger(name, level=INFO, show_level=True,logfile=None):
     :return: SimpleLogger instance
     """
 
-    # get or create the logger
+# get or create the logger
     new_logger = getLogger(name)
 
     # skip configuration if logger already configured
