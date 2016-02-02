@@ -1,12 +1,13 @@
 #Simple Log for Python
 ----------------------
 
-simple_log provides is a simplistic wrapper for python logging module.
+simple_log provides is a simplistic wrapper for python 'logging' module.
 It is supposed to be used as a drop in replacement for "print" for people who cannot 
 be bothered to set up proper logging. 
 
-It allows logging for any type and count of messages but sacrifices being able to parse arguments.
-Its functions are NOT interchangable with those in the logging module but follow a close resemblance.
+It allows logging for any type and count of messages but sacrifices being able to pass arguments in methods 'debug'/'info', etc..
+
+Its methods are NOT interchangable with those in 'logging' module but follow a close resemblance.
 
 
 ##Basic
