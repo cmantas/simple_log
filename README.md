@@ -87,10 +87,10 @@ Jan22 17:56:05 [ INFO]        also-in-file1: This will be printed in a file
 Jan22 17:56:05 [ INFO]        also-in-file2: This will also be printed in a file
 ```
 
-Misc
+#Misc
 -----
-No Levels
-*********
+##No Levels
+-----------
 You can also avoid printing levels in output
 
 ```python
