@@ -21,6 +21,7 @@ log1 = slog.get_simple_logger('Some Big Name', 'INFO')
 log2 = slog.get_simple_logger(Foo, 'ERROR')
 log3 = slog.get_simple_logger('an unreasonably big name')
 log1.info("The earth has", 1, 'moon(s)')
+log1.info()
 log2.critical('Everything blew up!')
 log3.info('This will mess indentation up')
 
