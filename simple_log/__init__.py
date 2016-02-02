@@ -1,7 +1,21 @@
+# encoding: utf-8
+
+"""
+Simplistic wrapper for Python logging module
+@author: Chris Mantas
+@contact: the1pro@gmail.com
+@since: Created on 2016-01-20
+@todo: custom formats,
+@copyright: Copyright (C) 2009 MC.Spring Team. All rights reserved.
+@license: http://www.apache.org/licenses/LICENSE-2.0 Apache License
+"""
+
 import logging
 from logging import *
 from inspect import isclass
 import sys
+
+__all__ = ['SimpleManager', 'SimpleLogger', 'get_simple_logger', 'name_size']
 
 
 class SimpleManager(logging.Manager):
@@ -81,8 +95,8 @@ logging.root = SimpleLogger('root', level=DEBUG)
 setLoggerClass(SimpleLogger)
 Logger.manager = SimpleManager(logging.root)
 
-# ===================> private, static params <======================== #
-_name_size=15 # max name size allowed
+# ===================> misc static params <======================== #
+name_size=15 # max name size allowed
 _configured_loggers = set()
 
 
@@ -110,7 +124,7 @@ def get_simple_logger(name, level=INFO, show_level=True,logfile=None):
     new_logger.setLevel(DEBUG)
 
     # construct the console format
-    console_format = '%(name){namesize}s: '.format(namesize=_name_size) if name else ""
+    console_format = '%(name){namesize}s: '.format(namesize=name_size) if name else ""
     console_format += '%(message)s'
     if show_level: console_format = '[%(levelname)8s]' +console_format
     formatter = Formatter(console_format, "%b%d %H:%M:%S")
