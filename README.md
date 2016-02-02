@@ -1,5 +1,4 @@
-Simple Log for Python
-=====================
+#Simple Log for Python
 
 simple_log provides is a simplistic wrapper for python logging module.
 It is supposed to be used as a drop in replacement for "print" for people who cannot 
@@ -9,8 +8,8 @@ It allows logging for any type and count of messages but sacrifices being able t
 Its functions are NOT interchangable with those in the logging module but follow a close resemblance.
 
 
-Basic
-------
+##Basic
+
 simple_log can be used withoud creating a logger object.
 
 By default it's configured in a 'DEBUG' level and no logger name is printed.
