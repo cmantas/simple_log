@@ -11,8 +11,10 @@ Its functions are NOT interchangable with those in the logging module but follow
 
 Basic
 ------
-simple_log can be used withoud defining a logger object.
+simple_log can be used withoud creating a logger object.
+
 By default it's configured in a 'DEBUG' level.
+
 In this case it alligns the level names
 
 ```python
@@ -23,5 +25,39 @@ slog.warning("Something might be wrong")
 
 >   DEBUG:This is a debug message
 > WARNING:Something might be wrong
+```
+
+Any Arguments
+--------------
+Any number of arguments is converted to a joined into a string message.
+```python
+class Bar(object):
+    def __str__(self):
+        return "a Bar"
+
+slog.info(Bar(), 'on route', 22)
+
+> INFO:a Bar on route 22
+```
+
+Custom Names or Classes
+-----------------------
+You can use custom logger names or classes.
+
+One can also use levels as strings.
+
+
+
+```python
+class Foo(object):
+    pass
+
+log1 = slog.get_simple_logger('Some Big Name', 'INFO')
+log2 = slog.get_simple_logger(Foo, 'ERROR')
+log3 = slog.get_simple_logger('an unreasonably big name')
+log1.info("The earth has", 1, 'moon(s)')
+log2.critical('Everything blew up!')
+log3.info('Indentation is messed up by big names)
+
 ```
 
