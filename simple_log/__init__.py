@@ -6,7 +6,6 @@ Simplistic wrapper for Python logging module
 @contact: the1pro@gmail.com
 @since: Created on 2016-01-20
 @todo: custom formats,
-@copyright: Copyright (C) 2009 MC.Spring Team. All rights reserved.
 @license: http://www.apache.org/licenses/LICENSE-2.0 Apache License
 """
 
