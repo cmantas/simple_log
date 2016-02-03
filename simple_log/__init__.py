@@ -1,7 +1,20 @@
+# encoding: utf-8
+
+"""
+Simplistic wrapper for Python logging module
+@author: Chris Mantas
+@contact: the1pro@gmail.com
+@since: Created on 2016-01-20
+@todo: custom formats, break up big lines
+@license: http://www.apache.org/licenses/LICENSE-2.0 Apache License
+"""
+
 import logging
 from logging import *
 from inspect import isclass
 import sys
+
+__all__ = ['SimpleManager', 'SimpleLogger', 'get_simple_logger', 'name_size', 'output_stream']
 
 
 class SimpleManager(logging.Manager):
