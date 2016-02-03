@@ -6,7 +6,8 @@ import sys
 
 class SimpleManager(logging.Manager):
     """
-    Overrides the getLogger method of logging.Manager in order to support any type of name
+    # Overrides the getLogger method of logging.Manager
+    #    in order to support any type of name
     """
     def getLogger(self, name=None):
 
@@ -23,11 +24,13 @@ class SimpleManager(logging.Manager):
 
 class SimpleLogger (Logger):
     """
-    Overrides logging.Logger methods: info, debug, etc, in order to support any count/type of messages.
+    Overrides logging.Logger methods: info, debug, etc, in order to support any
+        count/type of messages.
     Does not support extra arguments apart from the messages in those methods.
     """
     def __init__(self, name, level=NOTSET):
-        self.super = super(SimpleLogger, self) #avoid calling supper method all the time
+        # avoid calling supper method all the time
+        self.super = super(SimpleLogger, self)
         self.super.__init__(name, level)
 
     def info(self, *msgs):
@@ -43,15 +46,17 @@ class SimpleLogger (Logger):
         self.super.error(_s_join(msgs))
 
     def exception(self, *msgs):
-         self.super.exception(_s_join(msgs))
+        self.super.exception(_s_join(msgs))
 
     def critical(self, *msgs):
         self.super.critical(_s_join(msgs))
 
+# ################ HELPER METHODS  ################# #
 
-################# HELPER METHODS  #################
+
 # method joining an iterable into a single string
-_s_join = lambda msgs: " ".join(map(str, msgs))
+def _s_join(msgs):
+    return " ".join(map(str, msgs))
 
 
 def _get_level_from_name(lname_or_val):
@@ -65,7 +70,8 @@ def _get_level_from_name(lname_or_val):
         if lname_or_val in logging._levelNames:
             level = logging._levelNames[lname_or_val]
         else:
-            raise Exception("I do not know that level: {}".format(lname_or_val))
+            raise Exception("I do not know that level: {}"
+                            .format(lname_or_val))
         return level
     elif isinstance(lname_or_val, int):
         # it's not a name but a value: return itself
@@ -76,17 +82,17 @@ def _get_level_from_name(lname_or_val):
 
 # ==========------> OVERWRITE logging DEFAULTS <-------=============== #
 # overwrite root logger, logger class and manager, basic format
-logging.BASIC_FORMAT='%(levelname)8s:%(message)s'
+logging.BASIC_FORMAT = '%(levelname)8s:%(message)s'
 logging.root = SimpleLogger('root', level=DEBUG)
 setLoggerClass(SimpleLogger)
 Logger.manager = SimpleManager(logging.root)
 
 # ===================> private, static params <======================== #
-_name_size=15 # max name size allowed
+NAME_SIZE = 15  # max name size allowed
 _configured_loggers = set()
 
 
-def get_simple_logger(name, level=INFO, show_level=True,logfile=None):
+def get_simple_logger(name, level=INFO, show_level=True, logfile=None):
     """
     Creates and Returns a SimpleLogger instance.
     :param         name: The name of the logger (can be of any type)
@@ -96,7 +102,7 @@ def get_simple_logger(name, level=INFO, show_level=True,logfile=None):
     :return: SimpleLogger instance
     """
 
-# get or create the logger
+    # get or create the logger
     new_logger = getLogger(name)
 
     # skip configuration if logger already configured
@@ -110,9 +116,11 @@ def get_simple_logger(name, level=INFO, show_level=True,logfile=None):
     new_logger.setLevel(DEBUG)
 
     # construct the console format
-    console_format = '%(name){namesize}s: '.format(namesize=_name_size) if name else ""
+    console_format = '%(name){namesize}s: '.format(namesize=NAME_SIZE) \
+        if name else ""
     console_format += '%(message)s'
-    if show_level: console_format = '[%(levelname)8s]' +console_format
+    if show_level:
+        console_format = '[%(levelname)8s]' + console_format
     formatter = Formatter(console_format, "%b%d %H:%M:%S")
 
     # create a console handler
@@ -136,8 +144,3 @@ def get_simple_logger(name, level=INFO, show_level=True,logfile=None):
         new_logger.addHandler(file_handler)
 
     return new_logger
-
-
-
-
-
