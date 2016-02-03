@@ -14,7 +14,8 @@ from logging import *
 from inspect import isclass
 import sys
 
-__all__ = ['SimpleManager', 'SimpleLogger', 'get_simple_logger', 'name_size', 'output_stream']
+__all__ = ['SimpleManager', 'SimpleLogger', 'get_simple_logger',
+           'name_size', 'output_stream']
 
 
 class SimpleManager(logging.Manager):
